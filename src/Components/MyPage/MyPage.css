@@ -131,7 +131,7 @@
    프로필 사진이 없을 때 "사진" 글씨
 ========================================================= */
 
-.mypage-profile-preview > span {
+.mypage-profile-preview>span {
     width: 100%;
     height: 100%;
 
@@ -473,11 +473,9 @@
     border-radius: 30px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #b68b78,
-            #9f7563
-        );
+            #9f7563);
 
     color: #fff;
 
@@ -503,11 +501,9 @@
 
 .mypage-btn-save:hover {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #a77c69,
-            #8e6656
-        );
+            #8e6656);
 
     box-shadow:
         0 11px 25px rgba(159, 117, 99, 0.25);
@@ -695,11 +691,9 @@
     border-bottom: 1px solid #f1e8e3;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #faf5f0,
-            #fffaf7
-        );
+            #fffaf7);
 
     color: #4f4944;
 
@@ -978,7 +972,7 @@
     }
 
 
-    .mypage-profile-preview > span {
+    .mypage-profile-preview>span {
         font-size: 12px;
     }
 
@@ -1045,7 +1039,7 @@
     }
 
 
-    .mypage-profile-preview > span {
+    .mypage-profile-preview>span {
         font-size: 11px;
     }
 

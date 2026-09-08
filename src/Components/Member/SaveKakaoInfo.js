@@ -208,8 +208,7 @@ function SaveKakaoInfo() {
                         <label className="save-kakao-label">
                             이메일
                         </label>
-                        <input className="save-kakao-input" type="text" value={email} onChange={(e) => { setEmail(e.currentTarget.value); setReid(''); setIdCheckResult(''); }} placeholder="이메일 형식(예: abc@abc.com)" />
-                        <button className="save-kakao-check-btn" onClick={idCheck}>중복확인</button>
+                        <input className="save-kakao-input" type="text" value={email} onChange={(e) => { setEmail(e.currentTarget.value); setReid(''); setIdCheckResult(''); }} placeholder="이메일 형식(예: abc@abc.com)" readOnly />
                     </div>
                     <div><label style={msgStyle}>{idCheckResult}</label></div>
 
@@ -218,8 +217,7 @@ function SaveKakaoInfo() {
                     <div className="save-kakao-row">
 
                         <label className="save-kakao-label">닉네임</label>
-                        <input className="save-kakao-input" type="text" value={nickname} onChange={(e) => { setNickname(e.currentTarget.value); setRenickname(''); setNicknameCheckResult(''); }} placeholder="닉네임을 입력하세요." />
-                        <button className="save-kakao-check-btn" onClick={nicknameCheck}>중복확인</button>
+                        <input className="save-kakao-input" type="text" value={nickname} onChange={(e) => { setNickname(e.currentTarget.value); setRenickname(''); setNicknameCheckResult(''); }} placeholder="닉네임을 입력하세요." readOnly />
                     </div>
                     <div><label style={nicknameMsgStyle}>{nicknameCheckResult}</label></div>
 

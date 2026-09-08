@@ -1,1 +1,299 @@
-.ranking-page{max-width:900px;margin:50px auto;padding:0 24px}.ranking-page h1,.ranking-page>p{text-align:center}.ranking-page h1{color:#4c3565}.ranking-page>p{color:#84798b}.ranking-tabs{display:flex;justify-content:center;gap:10px;margin-top:24px}.ranking-tabs button{padding:10px 24px;border:1px solid #d9c9e5;border-radius:20px;background:#fff;color:#674c7e;cursor:pointer}.ranking-tabs button.active{background:#765690;color:#fff}.my-ranking-box{display:flex;align-items:center;gap:18px;margin-top:24px;padding:18px 24px;border:2px solid #d9c9e5;border-radius:16px;background:#f8f3fb;color:#665670}.my-ranking-box span{flex:1;font-weight:600}.my-ranking-box strong{font-size:24px;color:#765690}.my-ranking-box em{font-style:normal;color:#8b62aa}.ranking-list{margin-top:20px;border:1px solid #eadff1;border-radius:16px;overflow:hidden}.ranking-row{display:grid;grid-template-columns:60px 1fr 190px 110px;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid #eee7f2;background:#fff}.ranking-row:last-child{border-bottom:0}.ranking-number{font-size:20px;color:#765690}.ranking-profile{display:flex;align-items:center;gap:12px}.ranking-profile img,.ranking-profile span{width:42px;height:42px;border-radius:50%;object-fit:cover}.ranking-profile span{display:grid;place-items:center;background:#f1ebf5}.ranking-row em{font-style:normal;font-weight:bold;color:#8b62aa}.ranking-load-more{height:70px;display:flex;align-items:center;justify-content:center;color:#9a8ca2;font-size:13px}.rank-1{background:#fff9df}.rank-2{background:#f7f7fa}.rank-3{background:#fff2e8}@media(max-width:650px){.my-ranking-box{flex-wrap:wrap;gap:8px 16px}.my-ranking-box span{flex-basis:100%}.ranking-row{grid-template-columns:40px 1fr}.ranking-row>span,.ranking-row>em{grid-column:2}}
+/* =========================================================
+   1. 전체 페이지
+========================================================= */
+.ranking-page {
+    width: 100%;
+    max-width: 1120px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 80px 30px 100px;
+    background: #fffdfb;
+    color: #4f4944;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* =========================================================
+   2. 제목
+========================================================= */
+.ranking-page h1 {
+    margin: 0;
+    text-align: center;
+    font-family: 'Jua', sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    color: #4f4944;
+}
+
+.ranking-page > p {
+    margin: 12px 0 0;
+    text-align: center;
+    color: #817971;
+    font-size: 15px;
+    line-height: 1.7;
+}
+/* =========================================================
+   3. AI 캐릭터 탭
+========================================================= */
+.ranking-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+.ranking-tabs button {
+    min-width: 105px;
+    padding: 12px 25px;
+    border: 1px solid #eadbd2;
+    border-radius: 30px;
+    background: #fffaf7;
+    color: #8b7568;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ranking-tabs button:hover {
+    transform: translateY(-2px);
+    background: #f8eee8;
+    color: #9f7563;
+    box-shadow: 0 7px 18px rgba(80, 65, 55, 0.07);
+}
+
+.ranking-tabs button.active {
+    border-color: #b68b78;
+    background: #b68b78;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(182, 139, 120, 0.20);
+}
+
+/* =========================================================
+   4. 나의 랭킹
+========================================================= */
+
+.my-ranking-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 22px 28px;
+    border: 1px solid #eadbd2;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            #faf5f0,
+            #fffaf7
+        );
+    box-shadow: 0 10px 30px rgba(80, 65, 55, 0.045);
+}
+
+.my-ranking-box span {
+    flex: 1;
+    color: #6f6963;
+    font-size: 14px;
+    font-weight: 600;
+}
+.my-ranking-box strong {
+    color: #b68b78;
+    font-family: 'Jua', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.my-ranking-box em {
+    font-style: normal;
+    color: #9a8173;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   5. 랭킹 리스트
+========================================================= */
+
+.ranking-list {
+    margin-top: 22px;
+    overflow: hidden;
+    border: 1px solid #eee2db;
+    border-radius: 25px;
+    background: #fffaf7;
+    box-shadow: 0 10px 30px rgba(80, 65, 55, 0.045);
+}
+
+/* =========================================================
+   6. 랭킹 한 줄
+========================================================= */
+
+.ranking-row {
+    display: grid;
+    grid-template-columns:
+        65px
+        1fr
+        190px
+        110px;
+
+    align-items: center;
+    gap: 14px;
+    min-height: 75px;
+    padding: 14px 25px;
+    border-bottom: 1px solid #f1e8e2;
+    background: #fffaf7;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.ranking-row:last-child {
+    border-bottom: 0;
+}
+
+.ranking-row:hover {
+    background: #fffdfb;
+}
+/* =========================================================
+   7. 순위 번호
+========================================================= */
+.ranking-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #8b7568;
+    font-family: 'Jua', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* =========================================================
+   8. 프로필
+========================================================= */
+.ranking-profile {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+}
+
+.ranking-profile img,
+.ranking-profile span {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ranking-profile img {
+    border: 2px solid #f3e6df;
+    box-shadow: 0 4px 10px rgba(80, 65, 55, 0.08);
+}
+
+.ranking-profile span {
+    display: grid;
+    place-items: center;
+    background: #f3e6df;
+    color: #b68b78;
+    font-size: 20px;
+}
+
+.ranking-profile strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #554e49;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   9. 레벨
+========================================================= */
+.ranking-row > span {
+    color: #817971;
+    font-size: 13px;
+    font-weight: 500;
+}
+/* =========================================================
+   10. EXP
+========================================================= */
+.ranking-row em {
+    font-style: normal;
+    color: #b68b78;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+}
+/* =========================================================
+   11. TOP 3
+========================================================= */
+/* 1등 */
+.ranking-row.rank-1 {
+    background:
+        linear-gradient(
+            90deg,
+            #fff9e9,
+            #fffaf3
+        );
+}
+
+.ranking-row.rank-1 .ranking-number {
+    background: #d9b56d;
+    color: #ffffff;
+    box-shadow:  0 5px 12px rgba(180, 145, 80, 0.20);
+}
+
+.ranking-row.rank-1 .ranking-profile strong {
+    color: #80612d;
+}
+
+/* 2등 */
+.ranking-row.rank-2 {
+    background:
+        linear-gradient(
+            90deg,
+            #f8f7f5,
+            #fffaf7
+        );
+}
+
+.ranking-row.rank-2 .ranking-number {
+    background: #aaa8a3;
+    color: #ffffff;
+}
+
+/* 3등 */
+.ranking-row.rank-3 {
+    background:
+        linear-gradient(
+            90deg,
+            #fff3eb,
+            #fffaf7
+        );
+}
+
+.ranking-row.rank-3 .ranking-number {
+    background: #c78f6c;
+    color: #ffffff;
+}
+/* =========================================================
+   12. 더보기 영역
+========================================================= */
+.ranking-load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    color: #a09289;
+    font-size: 13px;
+    background: #fffdfb;
+}
+

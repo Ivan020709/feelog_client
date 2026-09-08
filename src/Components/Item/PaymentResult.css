@@ -1,0 +1,337 @@
+/* =========================================================
+   PaymentResult.css
+   메인 페이지와 통일된 따뜻한 아이보리 / 베이지 디자인
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   1. 전체 페이지
+========================================================= */
+.item-shop {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(243, 230, 223, 0.65),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(250, 245, 240, 0.9),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fffdfb 0%,
+            #faf5f0 100%
+        );
+
+    color: #4f4944;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow: hidden;
+}
+
+/* =========================================================
+   2. 배경 장식
+========================================================= */
+.item-shop::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    top: -250px;
+    right: -120px;
+    border-radius: 50%;
+    background: rgba(182, 139, 120, 0.07);
+    pointer-events: none;
+}
+
+.item-shop::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    bottom: -190px;
+    left: -120px;
+    border-radius: 50%;
+    background: rgba(243, 230, 223, 0.65);
+    pointer-events: none;
+}
+/* =========================================================
+   3. 결과 카드
+========================================================= */
+
+.payment-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 52px 50px;
+    box-sizing: border-box;
+    border: 1px solid #eee1d9;
+    border-radius: 32px;
+    background: rgba(255, 250, 247, 0.96);
+    text-align: center;
+    box-shadow:
+        0 20px 55px rgba(80, 65, 55, 0.08),
+        0 5px 18px rgba(80, 65, 55, 0.035);
+    backdrop-filter: blur(10px);
+    animation: paymentCardAppear 0.5s ease;
+}
+
+@keyframes paymentCardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================================
+   4. 결과 아이콘
+========================================================= */
+.payment-result-icon {
+    width: 78px;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            135deg,
+            #f3e6df,
+            #ead8ce
+        );
+    color: #a77c69;
+    font-size: 34px;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(182, 139, 120, 0.15);
+    animation: iconAppear 0.6s ease;
+}
+@keyframes iconAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* =========================================================
+   5. 실패 아이콘
+========================================================= */
+.payment-fail .payment-result-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #f5e9e4,
+            #ead8d0
+        );
+    color: #a66f5b;
+}
+/* =========================================================
+   6. 제목
+========================================================= */
+.payment-card h1 {
+    margin: 0 0 16px;
+    font-family: 'Jua', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: #4f4944;
+}
+/* =========================================================
+   7. 결과 메시지
+========================================================= */
+.payment-result-message {
+    margin: 0;
+    color: #817971;
+    font-size: 15px;
+    line-height: 1.8;
+}
+/* =========================================================
+   8. 결제 정보
+========================================================= */
+.payment-info {
+    margin: 30px 0 20px;
+    padding: 18px 22px;
+    border: 1px solid #eee2db;
+    border-radius: 19px;
+    background:
+        linear-gradient(
+            135deg,
+            #faf5f0,
+            #fffaf7
+        );
+    text-align: left;
+}
+.payment-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0;
+}
+.payment-info-row + .payment-info-row {
+    border-top: 1px solid #eee4de;
+}
+.payment-info-row span {
+    flex-shrink: 0;
+    color: #817971;
+    font-size: 13px;
+    font-weight: 500;
+}
+.payment-info-row strong {
+    color: #5d554f;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    word-break: break-all;
+}
+/* =========================================================
+   9. 결제 금액
+========================================================= */
+.payment-info-row .payment-amount {
+    color: #9f7563;
+    font-size: 23px;
+    font-weight: 700;
+}
+/* =========================================================
+   10. 성공 안내
+========================================================= */
+.payment-success-notice {
+    margin: 20px 0 0 !important;
+    color: #817971;
+    font-size: 13px !important;
+    line-height: 1.8;
+}
+/* =========================================================
+   11. 실패 안내
+========================================================= */
+.payment-fail-notice {
+    margin: 22px 0 0 !important;
+    color: #817971;
+    font-size: 13px !important;
+    line-height: 1.8;
+}
+/* =========================================================
+   12. 결과 버튼
+========================================================= */
+.payment-result-button {
+    width: 100%;
+    height: 56px;
+    margin-top: 28px;
+    border: none;
+    border-radius: 17px;
+    background:
+        linear-gradient(
+            135deg,
+            #b68b78,
+            #9f7563
+        );
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 9px 22px rgba(182, 139, 120, 0.22);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+.payment-result-button:hover {
+    transform: translateY(-3px);
+    background:
+        linear-gradient(
+            135deg,
+            #a77c69,
+            #8f6756
+        );
+    box-shadow:
+        0 13px 28px rgba(159, 117, 99, 0.25);
+}
+
+
+.payment-result-button:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   13. 로딩 카드
+========================================================= */
+
+.payment-loading {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   14. 로딩 아이콘
+========================================================= */
+.payment-loading-icon {
+    margin-bottom: 20px;
+    color: #b68b78;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    animation: paymentLoading 1.2s ease-in-out infinite;
+}
+
+
+@keyframes paymentLoading {
+    0% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   15. 로딩 제목
+========================================================= */
+
+.payment-loading h1 {
+    margin-bottom: 10px;
+}
+
+
+.payment-loading p {
+    margin: 0;
+
+    color: #817971;
+
+    font-size: 14px;
+}
+
+

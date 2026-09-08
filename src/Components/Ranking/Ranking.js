@@ -54,7 +54,7 @@ function Ranking() {
             <h1>AI 친밀도 랭킹</h1>
             <p>AI별로 가장 가까워진 사용자를 확인해 보세요.</p>
             <div className="ranking-tabs">
-                {['필', '그', '로'].map(name => (
+                {['필', '로', '그'].map(name => (
                     <button key={name} className={character === name ? 'active' : ''}
                         onClick={() => setCharacter(name)}>{name} 랭킹</button>
                 ))}

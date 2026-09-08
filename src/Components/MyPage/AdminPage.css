@@ -30,7 +30,7 @@
 .admin-sidebar {
     width: 290px;
     min-width: 210px;
-    height: 300px;
+    height: 330px;
     border-radius: 20px;
     background: #ffffff;
 
@@ -895,6 +895,7 @@
     }
 
 }
+
 .admin-member-table {
     width: 100%;
     background: #fff;
@@ -912,5 +913,11 @@
     align-items: center;
 }
 
-.admin-member-row:last-child { border-bottom: 0; }
-.admin-member-head { font-weight: 700; background: #f8f5f2; }
+.admin-member-row:last-child {
+    border-bottom: 0;
+}
+
+.admin-member-head {
+    font-weight: 700;
+    background: #f8f5f2;
+}

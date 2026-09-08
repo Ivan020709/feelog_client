@@ -1,3 +1,7 @@
+/* =========================================================
+   모달 배경
+========================================================= */
+
 .report-modal-backdrop {
     position: fixed;
     z-index: 1000;
@@ -6,87 +10,285 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: rgba(49, 39, 70, .48);
+    box-sizing: border-box;
+    background: rgba(79, 73, 68, 0.42);
+    backdrop-filter: blur(3px);
+    animation: reportBackdropShow .2s ease;
 }
-
+/* =========================================================
+   모달 등장
+========================================================= */
+@keyframes reportBackdropShow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* =========================================================
+   모달
+========================================================= */
 .report-modal {
-    width: min(100%, 410px);
-    padding: 26px;
-    border: 1px solid #e4d9f1;
-    border-radius: 24px;
-    background: #fffdfd;
-    box-shadow: 0 20px 55px rgba(65, 48, 91, .24);
+    width: min(100%, 440px);
+    padding: 30px 32px 28px;
+    box-sizing: border-box;
+    border: 1px solid #f0e5df;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            135deg,
+            #fffdfb 0%,
+            #fffaf7 100%
+        );
+    color: #4f4944;
+    box-shadow: 0 20px 50px rgba(80, 65, 55, 0.20);
+    animation: reportModalShow .22s ease-out;
 }
-
+/* =========================================================
+   모달 등장 애니메이션
+========================================================= */
+@keyframes reportModalShow {
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        }
+}
+/* =========================================================
+   Header
+========================================================= */
 .report-modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
-
+/* =========================================================
+   제목
+========================================================= */
 .report-modal-header h2 {
     margin: 0;
-    color: #39304f;
-    font-size: 22px;
+    color: #4f4944;
+    font-family: 'Jua', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
 }
-
+/* =========================================================
+   닫기 버튼
+========================================================= */
 .report-modal-header button {
-    border: 0;
-    background: none;
-    color: #7561a8;
-    font-size: 28px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #a89890;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    line-height: 1;
     cursor: pointer;
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
 }
-
+.report-modal-header button:hover {
+    background: #f7ebe4;
+    color: #8e6656;
+    transform: rotate(5deg);
+}
+.report-modal-header button:focus {
+    outline: none;
+}
+.report-modal-header button:focus-visible {
+    outline: 2px solid #c9977d;
+    outline-offset: 2px;
+}
+/* =========================================================
+   신고 대상 게시글 제목
+========================================================= */
 .report-modal-post-title {
-    margin: 16px 0 22px;
+    margin: 14px 0 22px;
+    padding: 13px 15px;
     overflow: hidden;
-    color: #756c82;
+    box-sizing: border-box;
+    border: 1px solid #eadbd3;
+    border-radius: 11px;
+    background: #faf5f0;
+    color: #806e64;
+    font-size: 13px;
+    line-height: 1.5;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
+/* =========================================================
+   Label
+========================================================= */
 .report-modal label {
     display: block;
-    margin: 14px 0 7px;
-    color: #51455f;
+    margin: 16px 0 8px;
+    color: #665950;
+    font-size: 14px;
     font-weight: 700;
+    letter-spacing: -0.3px;
 }
-
+/* =========================================================
+   선택 사항
+========================================================= */
 .report-modal label span {
-    color: #9b91a7;
+    color: #b5a8a0;
+    font-size: 12px;
     font-weight: 400;
 }
-
-.report-modal select,
+/* =========================================================
+   Select
+========================================================= */
+.report-modal select {
+    width: 100%;
+    height: 48px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    border: 1px solid #e7d8cf;
+    border-radius: 10px;
+    outline: none;
+    background: #fffaf7;
+    color: #514943;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        border-color .2s ease,
+        background-color .2s ease,
+        box-shadow .2s ease;
+}
+.report-modal select:focus {
+    border-color: #c9977d;
+    background: #fffdfb;
+    box-shadow: 0 0 0 3px rgba(201, 151, 125, 0.12);
+}
+/* =========================================================
+   Textarea
+========================================================= */
 .report-modal textarea {
     width: 100%;
-    padding: 11px 12px;
-    border: 1px solid #ded3ea;
-    border-radius: 12px;
+    min-height: 120px;
+    padding: 13px 14px;
     box-sizing: border-box;
-    background: #fff;
-    font: inherit;
-}
-
-.report-modal textarea {
-    min-height: 100px;
     resize: vertical;
+    border: 1px solid #e7d8cf;
+    border-radius: 10px;
+    outline: none;
+    background: #fffaf7;
+    color: #514943;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    transition:
+        border-color .2s ease,
+        background-color .2s ease,
+        box-shadow .2s ease;
 }
-
+/* =========================================================
+   Textarea Placeholder
+========================================================= */
+.report-modal textarea::placeholder {
+    color: #b5a8a0;
+}
+/* =========================================================
+   Textarea Focus
+========================================================= */
+.report-modal textarea:focus {
+    border-color: #c9977d;
+    background: #fffdfb;
+    box-shadow: 0 0 0 3px rgba(201, 151, 125, 0.12);
+}
+/* =========================================================
+   신고 접수 버튼
+========================================================= */
 .report-modal-submit {
     width: 100%;
-    margin-top: 20px;
-    padding: 13px;
-    border: 0;
-    border-radius: 999px;
-    background: #7561a8;
+    height: 48px;
+    margin-top: 22px;
+    padding: 0;
+    border: 1px solid #b68b78;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#b68b78, #9f7563);
     color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 0 6px 14px rgba(182, 139, 120, 0.18);
+    box-sizing: border-box;
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
 }
-
+/* =========================================================
+   신고 접수 Hover
+========================================================= */
+.report-modal-submit:hover:not(:disabled) {
+    border-color: #9f7563;
+    background: linear-gradient(135deg,#a77c69, #8e6656 );
+    transform: translateY(-2px);
+    box-shadow:0 9px 20px rgba(159, 117, 99, 0.22);
+}
+/* =========================================================
+   신고 접수 Active
+========================================================= */
+.report-modal-submit:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow:0 4px 9px rgba(159, 117, 99, 0.16);
+}
+/* =========================================================
+   신고 접수 Focus
+========================================================= */
+.report-modal-submit:focus {
+    outline: none;
+}
+.report-modal-submit:focus-visible {
+    outline: 2px solid #c9977d;
+    outline-offset: 3px;
+}
+/* =========================================================
+   접수 중
+========================================================= */
 .report-modal-submit:disabled {
     cursor: wait;
     opacity: .6;
+    transform: none;
+    box-shadow: 0 3px 8px rgba(100, 75, 60, 0.08);
+}
+/* =========================================================
+   모바일
+========================================================= */
+@media (max-width: 480px) {
+    .report-modal-backdrop { padding: 15px;}
+    .report-modal {
+        width: 100%;
+        padding: 27px 20px 22px;
+        border-radius: 18px;
+    }
+    .report-modal-header h2 {font-size: 24px;}
+    .report-modal-post-title { margin-bottom: 18px;font-size: 12px;}
+    .report-modal label {margin-top: 14px;font-size: 13px;}
+    .report-modal select {height: 46px;font-size: 13px;}
+    .report-modal textarea {min-height: 105px;font-size: 12px; }
+    .report-modal-submit { height: 46px;margin-top: 19px;font-size: 13px;}
 }

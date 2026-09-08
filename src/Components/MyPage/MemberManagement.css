@@ -1,0 +1,314 @@
+/* =========================================
+   회원관리 전체
+========================================= */
+
+.member-management {
+    width: 100%;
+}
+
+
+/* =========================================
+   회원관리 헤더
+========================================= */
+
+.member-management-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.member-management-title {
+    margin: 0 0 8px;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #302b3d;
+}
+
+
+.member-management-description {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #99929f;
+}
+
+
+.member-management-count {
+    font-size: 14px;
+
+    color: #8b8492;
+}
+
+
+.member-management-count strong {
+    color: #7962ae;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   회원 테이블
+========================================= */
+
+.admin-member-table {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e7e1dc;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   회원 한 줄
+========================================= */
+
+.admin-member-row {
+    display: grid;
+
+    grid-template-columns:
+        70px 100px 120px minmax(210px, 1fr) 100px 90px 110px;
+
+    min-width: 850px;
+
+    min-height: 58px;
+
+    padding: 0 16px;
+
+    box-sizing: border-box;
+
+    align-items: center;
+
+    border-bottom: 1px solid #eee9e5;
+
+    color: #55505a;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    transition: background-color 0.15s ease;
+}
+
+
+.admin-member-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   테이블 헤더
+========================================= */
+
+.admin-member-head {
+    min-height: 50px;
+
+    background: #f8f5f2;
+
+    color: #766e78;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   회원 행 hover
+========================================= */
+
+.admin-member-row:not(.admin-member-head):hover {
+    background: #fcfaf8;
+}
+
+
+/* =========================================
+   번호
+========================================= */
+
+.admin-member-row>div:first-child {
+    color: #99929a;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   이름
+========================================= */
+
+.admin-member-row>div:nth-child(2) {
+    color: #4f4a54;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   닉네임
+========================================= */
+
+.admin-member-row>div:nth-child(3) {
+    color: #655d69;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   이메일
+========================================= */
+
+.member-email {
+    padding: 0 10px;
+
+    overflow: hidden;
+
+    color: #625b66;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   가입 방식
+========================================= */
+
+.admin-member-row>div:nth-child(5) {
+    color: #817984;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   권한
+========================================= */
+
+.member-role {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 52px;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    box-sizing: border-box;
+}
+
+
+/* USER */
+
+.member-role.user {
+    background: #f3eefb;
+
+    color: #7962ae;
+}
+
+
+/* ADMIN */
+
+.member-role.admin {
+    background: #fff0f0;
+
+    color: #d45757;
+}
+
+
+/* COMPANY */
+
+.member-role.company {
+    background: #eef7f5;
+
+    color: #4f958b;
+}
+
+
+/* =========================================
+   가입일
+========================================= */
+
+.admin-member-row>div:nth-child(7) {
+    color: #8d858f;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   회원 없음
+========================================= */
+
+.member-empty {
+    min-width: 850px;
+
+    padding: 70px 20px;
+
+    box-sizing: border-box;
+
+    color: #aaa3ad;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   반응형
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .admin-member-table {
+        overflow-x: auto;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .member-management-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .member-management-title {
+        font-size: 24px;
+    }
+
+    .member-management-description {
+        font-size: 13px;
+    }
+
+}

@@ -166,7 +166,7 @@ function SelectAi() {
                         <div className="example-ai">
                             정말?
                             <br />
-                            무슨 일이었는데?
+                            무슨 일인데?
                             나한테도 이야기해줘!
                         </div>
 

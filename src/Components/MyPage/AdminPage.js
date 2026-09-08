@@ -4,6 +4,7 @@ import './AdminPage.css';
 import jaxios from '../../utils/jwtUtil';
 import { useNavigate } from 'react-router-dom';
 import AdminActivityLog from './AdminActivityLog';
+import MemberManagement from './MemberManagement';
 import { useSelector } from 'react-redux';
 
 function AdminPage() {
@@ -12,8 +13,8 @@ function AdminPage() {
     const [selectedReport, setSelectedReport] = useState(null);
     const [reportList, setReportList] = useState([]);
     const [paging, setPaging] = useState({})
-    const [pages, setPages] = useState(1)
-    const [memberList, setMemberList] = useState([]);
+    const [pages, setPages] = useState(1);
+
     const navigate = useNavigate();
     const loginUser = useSelector(state => state.user);
 
@@ -25,8 +26,6 @@ function AdminPage() {
 
     const startPage = Math.floor((pages - 1) / 5) * 5 + 1;
     const endPage = Math.min(startPage + 4, totalPages);
-
-
 
 
     // 신고 목록
@@ -45,21 +44,6 @@ function AdminPage() {
             });
     }, [pages]);
 
-    // 회원관리 메뉴를 눌렀을 때만 회원 목록을 요청합니다.
-    // 서버에서는 관리자 이메일의 역할을 다시 검사하고 비밀번호는 보내지 않습니다.
-    useEffect(() => {
-        if (menu !== 'member' || !loginUser?.email) return;
-
-        jaxios.get('/api/admin/members', {
-            params: { adminEmail: loginUser.email }
-        })
-            .then((result) => setMemberList(result.data))
-            .catch((err) => {
-                console.error(err);
-                alert('회원 목록을 불러오지 못했습니다. 관리자 권한을 확인해 주세요.');
-            });
-    }, [menu, loginUser?.email]);
-
 
     // 페이지 이동
     const handlePage = (pageNumber) => {
@@ -73,6 +57,7 @@ function AdminPage() {
 
 
     function deleteReport() {
+
         const result = window.confirm(
             '신고된 게시물을 삭제하시겠습니까?'
         );
@@ -80,6 +65,7 @@ function AdminPage() {
         if (!result) {
             return;
         }
+
         jaxios.delete('/api/admin/deleteReport', {
             params: {
                 reportnum: selectedReport.reportnum,
@@ -99,17 +85,14 @@ function AdminPage() {
     }
 
 
-
-
-
-
     return (
         <div className="admin-layout">
 
             <div className="admin-page">
+
                 {/* =========================
-                관리자 사이드바
-            ========================= */}
+                    관리자 사이드바
+                ========================= */}
                 <aside className="admin-sidebar">
 
                     <div className="admin-sidebar-title">
@@ -140,6 +123,8 @@ function AdminPage() {
                             에러 로그
                         </button>
 
+
+                        {/* 관리자 활동 로그 */}
                         <button
                             type="button"
                             className={`admin-sidebar-adminLog ${menu === 'activity' ? 'active' : ''
@@ -149,9 +134,12 @@ function AdminPage() {
                             관리자 활동 로그
                         </button>
 
+
+                        {/* 회원관리 */}
                         <button
                             type="button"
-                            className={`admin-sidebar-item ${menu === 'member' ? 'active' : ''}`}
+                            className={`admin-sidebar-item ${menu === 'member' ? 'active' : ''
+                                }`}
                             onClick={() => setMenu('member')}
                         >
                             회원 관리
@@ -163,15 +151,16 @@ function AdminPage() {
 
 
                 {/* =========================
-                메인
-            ========================= */}
+                    메인
+                ========================= */}
                 <main className="admin-content">
 
                     <div className="admin-wrapper">
 
+
                         {/* =========================
-                        신고함
-                    ========================= */}
+                            신고함
+                        ========================= */}
                         {menu === 'report' && (
 
                             <>
@@ -179,6 +168,7 @@ function AdminPage() {
                                 <div className="admin-header">
 
                                     <div>
+
                                         <h2 className="admin-title">
                                             신고함
                                         </h2>
@@ -186,6 +176,7 @@ function AdminPage() {
                                         <p className="admin-description">
                                             접수된 신고 내역을 확인하고 관리합니다.
                                         </p>
+
                                     </div>
 
                                     <div className="admin-count">
@@ -211,17 +202,22 @@ function AdminPage() {
 
 
                                     {reportList.map((report) => (
-                                        <React.Fragment key={report.reportnum}>
+
+                                        <React.Fragment
+                                            key={report.reportnum}
+                                        >
 
                                             {/* 신고 목록 */}
                                             <div
-                                                className={`admin-board-row ${selectedReport?.reportnum === report.reportnum
+                                                className={`admin-board-row ${selectedReport?.reportnum ===
+                                                    report.reportnum
                                                     ? 'selected'
                                                     : ''
                                                     }`}
                                                 onClick={() =>
                                                     setSelectedReport(
-                                                        selectedReport?.reportnum === report.reportnum
+                                                        selectedReport?.reportnum ===
+                                                            report.reportnum
                                                             ? null
                                                             : report
                                                     )
@@ -254,93 +250,107 @@ function AdminPage() {
                                                     {report.indate.substring(0, 10)}
                                                 </div>
 
-
-
                                             </div>
 
 
                                             {/* 신고 상세 */}
-                                            {selectedReport?.reportnum === report.reportnum && (
+                                            {selectedReport?.reportnum ===
+                                                report.reportnum && (
 
-                                                <div className="report-detail">
+                                                    <div className="report-detail">
 
-                                                    <div className="report-detail-title">
-                                                        신고 상세
+                                                        <div className="report-detail-title">
+                                                            신고 상세
+                                                        </div>
+
+
+                                                        <div className="report-detail-info">
+
+                                                            <div className="report-detail-item">
+
+                                                                <div className="report-detail-label">
+                                                                    신고 유형
+                                                                </div>
+
+                                                                <div className="report-detail-value">
+                                                                    {report.reasontype}
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div className="report-detail-item">
+
+                                                                <div className="report-detail-label">
+                                                                    신고 대상
+                                                                </div>
+
+                                                                <div className="report-detail-value">
+                                                                    {report.criminal}
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div className="report-detail-item">
+
+                                                                <div className="report-detail-label">
+                                                                    신고자
+                                                                </div>
+
+                                                                <div className="report-detail-value">
+                                                                    {report.reporter}
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div className="report-detail-item">
+
+                                                                <div className="report-detail-label">
+                                                                    신고일
+                                                                </div>
+
+                                                                <div className="report-detail-value">
+                                                                    {report.indate.substring(0, 10)}
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div className="report-detail-content">
+
+                                                            <div className="report-detail-label">
+                                                                신고 내용
+                                                            </div>
+
+                                                            <div className="report-detail-text">
+                                                                {report.content}
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        {report.status !== '처리완료' && (
+
+                                                            <button
+                                                                type="button"
+                                                                className="report-delete-button"
+                                                                onClick={deleteReport}
+                                                            >
+                                                                삭제
+                                                            </button>
+
+                                                        )}
+
                                                     </div>
 
-                                                    <div className="report-detail-info">
-
-                                                        <div className="report-detail-item">
-                                                            <div className="report-detail-label">
-                                                                신고 유형
-                                                            </div>
-
-                                                            <div className="report-detail-value">
-                                                                {report.reasontype}
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className="report-detail-item">
-                                                            <div className="report-detail-label">
-                                                                신고 대상
-                                                            </div>
-
-                                                            <div className="report-detail-value">
-                                                                {report.criminal}
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className="report-detail-item">
-                                                            <div className="report-detail-label">
-                                                                신고자
-                                                            </div>
-
-                                                            <div className="report-detail-value">
-                                                                {report.reporter}
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className="report-detail-item">
-                                                            <div className="report-detail-label">
-                                                                신고일
-                                                            </div>
-
-                                                            <div className="report-detail-value">
-                                                                {report.indate.substring(0, 10)}
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-
-                                                    <div className="report-detail-content">
-                                                        <div className="report-detail-label">
-                                                            신고 내용
-                                                        </div>
-
-                                                        <div className="report-detail-text">
-                                                            {report.content}
-                                                        </div>
-                                                    </div>
-
-
-                                                    {report.status !== '처리완료' && (
-                                                        <button
-                                                            type="button"
-                                                            className="report-delete-button"
-                                                            onClick={deleteReport}
-                                                        >
-                                                            삭제
-                                                        </button>
-                                                    )}
-                                                </div>
-
-                                            )}
+                                                )}
 
                                         </React.Fragment>
+
                                     ))}
 
                                 </div>
@@ -365,20 +375,36 @@ function AdminPage() {
 
                                         )}
 
+
                                         {/* 페이지 번호 */}
                                         {Array.from(
-                                            { length: endPage - startPage + 1 },
-                                            (_, index) => startPage + index
+                                            {
+                                                length:
+                                                    endPage -
+                                                    startPage +
+                                                    1
+                                            },
+                                            (_, index) =>
+                                                startPage + index
                                         ).map((pageNumber) => (
+
                                             <button
                                                 type="button"
                                                 key={pageNumber}
-                                                className={pages === pageNumber ? 'active' : ''}
-                                                onClick={() => handlePage(pageNumber)}
+                                                className={
+                                                    pages === pageNumber
+                                                        ? 'active'
+                                                        : ''
+                                                }
+                                                onClick={() =>
+                                                    handlePage(pageNumber)
+                                                }
                                             >
                                                 {pageNumber}
                                             </button>
+
                                         ))}
+
 
                                         {/* 다음 */}
                                         {endPage < totalPages && (
@@ -404,50 +430,34 @@ function AdminPage() {
 
 
                         {/* =========================
-                        에러 로그
-                    ========================= */}
+                            에러 로그
+                        ========================= */}
                         {menu === 'error' && (
                             <ErrorLog />
                         )}
 
+
+                        {/* =========================
+                            관리자 활동 로그
+                        ========================= */}
                         {menu === 'activity' && (
                             <AdminActivityLog />
                         )}
 
-                        {menu === 'member' && (
-                            <>
-                                <div className="admin-header">
-                                    <div>
-                                        <h2 className="admin-title">회원 관리</h2>
-                                        <p className="admin-description">가입 회원 정보를 조회합니다. 수정·삭제 기능은 포함하지 않습니다.</p>
-                                    </div>
-                                    <div className="admin-count">총 <strong>{memberList.length}</strong>명</div>
-                                </div>
 
-                                <div className="admin-member-table">
-                                    <div className="admin-member-row admin-member-head">
-                                        <div>번호</div><div>이름</div><div>닉네임</div>
-                                        <div>이메일</div><div>가입 방식</div><div>권한</div><div>가입일</div>
-                                    </div>
-                                    {memberList.map((member) => (
-                                        <div className="admin-member-row" key={member.userid}>
-                                            <div>{member.userid}</div>
-                                            <div>{member.name || '-'}</div>
-                                            <div>{member.nickname || '-'}</div>
-                                            <div>{member.email}</div>
-                                            <div>{member.provider || 'LOCAL'}</div>
-                                            <div>{member.role || 'USER'}</div>
-                                            <div>{member.indate ? String(member.indate).substring(0, 10) : '-'}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
+                        {/* =========================
+                            회원 관리
+                        ========================= */}
+                        {menu === 'member' && (
+                            <MemberManagement />
                         )}
 
                     </div>
 
                 </main>
+
             </div>
+
         </div>
     );
 }

@@ -1,1 +1,173 @@
-.affinity-box{margin:16px 0;padding:16px;border:1px solid #eadff5;border-radius:14px;background:#fff}.affinity-summary{display:flex;justify-content:space-between;gap:12px;color:#4c3565}.affinity-progress{height:9px;margin:10px 0 14px;background:#eee7f4;border-radius:9px;overflow:hidden}.affinity-progress span{display:block;height:100%;background:linear-gradient(90deg,#b997da,#76539a)}.affinity-items{display:flex;gap:10px;overflow-x:auto}.affinity-items button{display:flex;flex-direction:column;gap:3px;min-width:130px;padding:10px;border:1px solid #ded0e8;border-radius:10px;background:#faf7fd;cursor:pointer}.affinity-items button:disabled{opacity:.5;cursor:not-allowed}.affinity-items img{width:34px;height:34px;object-fit:contain}.affinity-items small{color:#8c6aa5}.affinity-empty{color:#8b808f}
+/* =========================================================
+   친밀도 전체 영역
+========================================================= */
+.affinity-box {
+    margin: 18px 0;
+    padding: 22px 24px;
+    border: 1px solid #f0e5de;
+    border-radius: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            #fffdfb,
+            #faf5f0
+        );
+    box-shadow: 0 8px 25px rgba(80, 65, 55, 0.045);
+    color: #4f4944;
+}
+
+/* =========================================================
+   친밀도 요약
+========================================================= */
+.affinity-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 11px;
+}
+.affinity-summary strong {
+    color: #4f4944;
+    font-family: 'Jua', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.affinity-summary span {
+    color: #9a8175;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+/* =========================================================
+   친밀도 경험치 게이지
+========================================================= */
+.affinity-progress {
+    width: 100%;
+    height: 10px;
+    margin: 0 0 18px;
+    background: #f0e5de;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.affinity-progress span {
+    display: block;
+    height: 100%;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            90deg,
+            #d8b8a8,
+            #b68b78
+        );
+    box-shadow: 0 2px 6px rgba(182, 139, 120, 0.18);
+    transition: width 0.4s ease;
+}
+
+/* =========================================================
+   아이템 영역
+========================================================= */
+.affinity-items {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 3px 2px 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #d9c4b8 transparent;
+}
+/* Chrome / Edge 스크롤바 */
+.affinity-items::-webkit-scrollbar {height: 6px;}
+.affinity-items::-webkit-scrollbar-track {background: transparent;}
+.affinity-items::-webkit-scrollbar-thumb {background: #dcc9be;border-radius: 10px;}
+/* =========================================================
+   아이템 버튼
+========================================================= */
+.affinity-items button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 145px;
+    min-height: 105px;
+    padding: 12px;
+    border: 1px solid #eadbd3;
+    border-radius: 17px;
+    background: #fffaf7;
+    color: #5d554f;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(80, 65, 55, 0.035);
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
+}
+/* 아이템 hover */
+.affinity-items button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    border-color: #cdb0a1;
+    background: #fffdfb;
+    box-shadow: 0 8px 18px rgba(80, 65, 55, 0.08);
+}
+
+/* =========================================================
+   아이템 이미지
+========================================================= */
+.affinity-items img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    filter:drop-shadow(0 4px 5px rgba(80, 65, 55, 0.08));
+}
+
+/* =========================================================
+   아이템 이름 / 수량
+========================================================= */
+.affinity-items button > span {
+    color: #5d554f;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+/* =========================================================
+   아이템 경험치
+========================================================= */
+.affinity-items small {
+    color: #b68b78;
+    font-size: 11px;
+    font-weight: 700;
+}
+/* =========================================================
+   아이템 사용 불가
+========================================================= */
+.affinity-items button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: #f7f3f0;
+    box-shadow: none;
+}
+
+.affinity-items button:disabled:hover {
+    transform: none;
+    border-color: #eadbd3;
+}
+/* =========================================================
+   아이템 없음
+========================================================= */
+.affinity-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 65px;
+    padding: 10px 15px;
+    border-radius: 14px;
+    background: #faf5f0;
+    color: #9a8d85;
+    font-size: 13px;
+    text-align: center;
+}
+
+
