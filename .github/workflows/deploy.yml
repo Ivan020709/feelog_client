@@ -17,11 +17,11 @@ jobs:
           key: ${{secrets.EC2_PRIVATE_KEY}}
           script_stop: true
           script: |
-            cd /home/ubuntu/Client
+            cd /home/ubuntu/feelog_client
             git pull origin main
 
-            docker stop reactclient || true
-            docker rm reactclient || true
+            docker stop feelog_client || true
+            docker rm feelog_client || true
 
-            docker build --no-cache -t reactclient .
-            docker run -d --name reactclient -p 80:80 reactclient
+            docker build --no-cache -t feelog_client .
+            docker run -d --name feelog_client -p 80:80 feelog_client
