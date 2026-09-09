@@ -277,7 +277,7 @@ function InquiryView() {
                 params: {
                     inquirynum: inquirynum,
                     nickname: loginUser.nickname,
-                    content: adminAnswer.trim(), 
+                    content: adminAnswer.trim(),
                 }
             }
         )

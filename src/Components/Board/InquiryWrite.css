@@ -328,11 +328,9 @@
     border: none;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #b68b78,
-            #9f7563
-        );
+            #9f7563);
 
     color: #fff;
 
@@ -342,11 +340,9 @@
 
 .inquiry-write-submit-btn:hover {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #a77c69,
-            #8e6656
-        );
+            #8e6656);
 
     transform: translateY(-2px);
 

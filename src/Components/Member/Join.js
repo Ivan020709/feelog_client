@@ -153,7 +153,7 @@ function Join() {
        현재는 화면의 기본 틀만 만든 상태입니다.
        나중에 이 함수 안에서 서버의 인증번호 확인 API를 호출하면 됩니다.
     ========================================================= */
-    
+
 
     function onConfirm() {
         if (!usercode) {
@@ -208,23 +208,24 @@ function Join() {
             );
         }
         document.getElementById('sendBtn').disabled = true
-        try { const result = await axios.post('/api/member/emailCheck', null,{params: {email: checkEmail}})
+        try {
+            const result = await axios.post('/api/member/emailCheck', null, { params: { email: checkEmail } })
             if (result.data.msg === 'OK') {
                 setIdCheckResult('※ 사용 가능한 이메일입니다.');
-                setMsgStyle({color: '#b68b78',flex: '1',fontWeight: '700'});
+                setMsgStyle({ color: '#b68b78', flex: '1', fontWeight: '700' });
 
                 /*중복확인 완료된 이메일 저장*/
                 setReid(checkEmail);
                 alert('이메일이 전송되었습니다. 해당 이메일 수신내역을 확인하세요')
             } else {
                 setIdCheckResult('※ 중복되는 이메일입니다.');
-                setMsgStyle({color: '#c47b70',flex: '1',fontWeight: '700'});
+                setMsgStyle({ color: '#c47b70', flex: '1', fontWeight: '700' });
                 setReid('');
             }
-        }catch(err){
+        } catch (err) {
             console.error(err);
             alert('이메일 중복 확인 중 오류가 발생했습니다.');
-        }finally{
+        } finally {
             document.getElementById('sendBtn').disabled = false
         }
     }
@@ -237,26 +238,26 @@ function Join() {
         setNickname(value);
         setRenickname('');
         setNicknameCheckResult('');
-        setNicknameMsgStyle({flex: '1'});
+        setNicknameMsgStyle({ flex: '1' });
     }
     /* =========================================================
        닉네임 중복 확인
     ========================================================= */
     function nicknameCheck() {
-        const checkNickname =nickname.trim();
+        const checkNickname = nickname.trim();
         if (!checkNickname) {
             return alert('닉네임을 입력하세요.');
         }
-        axios.post('/api/member/nicknameCheck', null,{params: {nickname: checkNickname}}
+        axios.post('/api/member/nicknameCheck', null, { params: { nickname: checkNickname } }
         )
             .then((result) => {
                 if (result.data.msg === 'OK') {
                     setNicknameCheckResult('※ 사용 가능한 닉네임입니다.');
-                    setNicknameMsgStyle({color: '#b68b78',flex: '1',fontWeight: '700'});
+                    setNicknameMsgStyle({ color: '#b68b78', flex: '1', fontWeight: '700' });
                     setRenickname(checkNickname);
                 } else {
                     setNicknameCheckResult('※ 중복되는 닉네임입니다.');
-                    setNicknameMsgStyle({color: '#c47b70',flex: '1',fontWeight: '700'});
+                    setNicknameMsgStyle({ color: '#c47b70', flex: '1', fontWeight: '700' });
                     setRenickname('');
                 }
             })
@@ -269,19 +270,21 @@ function Join() {
        프로필 이미지 업로드
     ========================================================= */
     function fileup(e) {
-        const file =e.target.files[0];
-        if (!file) {return;}
+        const file = e.target.files[0];
+        if (!file) { return; }
         if (!file.type.startsWith('image/')) {
             alert('이미지 파일만 선택할 수 있습니다.');
             e.target.value = '';
             return;
         }
-        const formData =new FormData();
-        formData.append('image',file);
-        axios.post('/api/member/fileupload',formData)
+        const formData = new FormData();
+        formData.append('image', file);
+        axios.post('/api/member/fileupload', formData)
             .then((result) => {
-                setSavefilename( result.data.savefilename);
-                setImgSrc(`http://localhost:8070/images/${result.data.savefilename}`);
+                setSavefilename(result.data.savefilename);
+                setImgSrc(
+                    `/images/${result.data.savefilename}`
+                );
             })
             .catch((err) => {
                 console.error(err);
@@ -293,17 +296,17 @@ function Join() {
     ========================================================= */
     function handlePhoneChange(e) {
         let value = e.currentTarget.value
-                .replace(/\D/g, '')
-                .slice(0, 11);
+            .replace(/\D/g, '')
+            .slice(0, 11);
         if (
             value.length > 3 &&
             value.length <= 7
         ) {
-            value =`${value.slice(0, 3)}-${value.slice(3)}`;
+            value = `${value.slice(0, 3)}-${value.slice(3)}`;
         } else if (
             value.length > 7
         ) {
-            value =`${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7)}`;
+            value = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7)}`;
         }
         setPhone(value);
     }
@@ -316,7 +319,7 @@ function Join() {
            이메일
         ----------------------------------------- */
         if (!checkEmail) {
-            return alert( '이메일을 입력하세요.');
+            return alert('이메일을 입력하세요.');
         }
         /** 이메일 형식 검사*/
         if (!emailRegex.test(checkEmail)) {
@@ -342,7 +345,7 @@ function Join() {
            이름
         ----------------------------------------- */
         if (!name.trim()) {
-            return alert( '이름을 입력하세요.');
+            return alert('이름을 입력하세요.');
         }
         /* -----------------------------------------
            닉네임
@@ -406,12 +409,12 @@ function Join() {
         /* -----------------------------------------
            전화번호
         ----------------------------------------- */
-        if (!phone) {return alert('번호를 입력하세요.');}
+        if (!phone) { return alert('번호를 입력하세요.'); }
         /* -----------------------------------------
            주소
         ----------------------------------------- */
-        if (zip_num === '') {return alert('우편번호를 입력하세요.');}
-        if (!address1) {return alert('주소를 입력하세요.');}
+        if (zip_num === '') { return alert('우편번호를 입력하세요.'); }
+        if (!address1) { return alert('주소를 입력하세요.'); }
 
         /* -----------------------------------------
            생년월일 생성

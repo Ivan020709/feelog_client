@@ -91,8 +91,10 @@ function MyPage() {
 
                 if (member.savefilename) {
                     setImgSrc(
-                        `http://localhost:8070/images/${member.savefilename}`
+                        `/images/${member.savefilename}`
                     );
+                } else {
+                    setImgSrc('');
                 }
 
                 setPhone(member.phone || '');
@@ -209,7 +211,7 @@ function MyPage() {
                 setSavefilename(result.data.savefilename);
 
                 setImgSrc(
-                    `http://localhost:8070/images/${result.data.savefilename}`
+                    `/images/${result.data.savefilename}`
                 );
 
             })
