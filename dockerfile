@@ -1,8 +1,8 @@
 FROM node:18-alpine AS build
 WORKDIR /app
-COPY feelog_client/package*.json ./
+COPY client/package*.json ./
 RUN npm install
-COPY feelog_client/ .
+COPY client/ .
 RUN npm run build
 
 FROM nginx:alpine
