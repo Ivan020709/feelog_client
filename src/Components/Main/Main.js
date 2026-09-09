@@ -22,6 +22,8 @@ function Main() {
         }
     };
 
+    
+
     return (
         <main className="main-page">
 
