@@ -20,8 +20,8 @@ jobs:
             cd /home/ubuntu/feelog_client
             git pull origin main
 
-            docker stop feelog_client || true
-            docker rm feelog_client || true
+            docker stop reactclient || true
+            docker rm reactclient || true
 
-            docker build --no-cache -t feelog_client .
-            docker run -d --name feelog_client -p 80:80 feelog_client
+            docker build --no-cache -t reactclient .
+            docker run -d --name reactclient -p 80:80 reactclient
