@@ -190,40 +190,44 @@ function MyPage() {
             });
     }
 
-    function fileup(e) {
+    @PostMapping("/fileupload")
+public HashMap<String, Object> fileupload(@RequestParam("image") MultipartFile file) {
 
-        const file = e.target.files[0];
+    HashMap<String, Object> map = new HashMap<String, Object>();
 
-        if (!file) return;
+    String path = sc.getRealPath("/images");
 
-        if (!file.type.startsWith('image/')) {
-            alert('이미지 파일만 선택할 수 있습니다.');
-            e.target.value = '';
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('image', file);
-
-        jaxios.post('/api/member/fileupload', formData)
-            .then((result) => {
-
-                setSavefilename(result.data.savefilename);
-
-                setImgSrc(
-                    `http://3.35.4.91/images/${result.data.savefilename}`
-                );
-
-            })
-            .catch((err) => {
-
-                console.error(err);
-
-                alert(
-                    '프로필 사진 업로드 중 오류가 발생했습니다.'
-                );
-            });
+    // images 폴더가 없으면 생성
+    File imageDir = new File(path);
+    if (!imageDir.exists()) {
+        imageDir.mkdirs();
     }
+
+    Calendar today = Calendar.getInstance();
+    long dt = today.getTimeInMillis();
+
+    String filename = file.getOriginalFilename();
+    String f1 = filename.substring(0, filename.lastIndexOf("."));
+    String f2 = filename.substring(filename.lastIndexOf("."));
+
+    String savefilename = f1 + dt + f2;
+
+    String uploadPath = path + "/" + savefilename;
+
+    try {
+
+        file.transferTo(new File(uploadPath));
+
+        map.put("savefilename", savefilename);
+
+    } catch (IllegalStateException | IOException e) {
+
+        e.printStackTrace();
+
+    }
+
+    return map;
+}
 
 
     function onSubmit() {
