@@ -269,6 +269,28 @@ function Join() {
     /* =========================================================
        프로필 이미지 업로드
     ========================================================= */
+    // function fileup(e) {
+    //     const file = e.target.files[0];
+    //     if (!file) { return; }
+    //     if (!file.type.startsWith('image/')) {
+    //         alert('이미지 파일만 선택할 수 있습니다.');
+    //         e.target.value = '';
+    //         return;
+    //     }
+    //     const formData = new FormData();
+    //     formData.append('image', file);
+    //     axios.post('/api/member/fileupload', formData)
+    //         .then((result) => {
+    //             setSavefilename(result.data.savefilename);
+    //             setImgSrc(
+    //                 `http://3.35.4.91/images/${result.data.savefilename}`
+    //             );
+    //         })
+    //         .catch((err) => {
+    //             console.error(err);
+    //             alert('프로필 사진 업로드 중 오류가 발생했습니다..');
+    //         });
+    // }
     function fileup(e) {
     const file = e.target.files[0];
 
