@@ -283,7 +283,7 @@ function Join() {
             .then((result) => {
                 setSavefilename(result.data.savefilename);
                 setImgSrc(
-                    `http://54.180.155.24/images/${result.data.savefilename}`
+                    `http://3.35.4.91/images/${result.data.savefilename}`
                 );
             })
             .catch((err) => {
