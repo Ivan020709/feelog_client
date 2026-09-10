@@ -67,6 +67,36 @@ function MyPage() {
         setPhone(value);
     };
 
+    function fileup(e) {
+        const file = e.target.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            alert('이미지 파일만 선택할 수 있습니다.');
+            e.target.value = '';
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        jaxios.post('/api/member/fileupload', formData)
+            .then((result) => {
+                console.log('이미지 업로드 결과:', result.data);
+
+                setSavefilename(result.data.savefilename);
+
+                setImgSrc(
+                    `http://3.35.4.91/images/${result.data.savefilename}`
+                );
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('프로필 사진 업로드 중 오류가 발생했습니다.');
+            });
+    }
+
 
     useEffect(() => {
         if (!loginUser || !loginUser.userid) {
