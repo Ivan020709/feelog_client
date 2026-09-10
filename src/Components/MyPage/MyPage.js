@@ -70,13 +70,19 @@ function MyPage() {
     function fileup(e) {
         const file = e.target.files[0];
 
-        if (!file) return;
+        if (!file) {
+            return;
+        }
 
         if (!file.type.startsWith('image/')) {
             alert('이미지 파일만 선택할 수 있습니다.');
             e.target.value = '';
             return;
         }
+
+        // 선택한 파일을 바로 미리보기
+        const previewUrl = URL.createObjectURL(file);
+        setImgSrc(previewUrl);
 
         const formData = new FormData();
         formData.append('image', file);
@@ -85,11 +91,8 @@ function MyPage() {
             .then((result) => {
                 console.log('이미지 업로드 결과:', result.data);
 
+                // 서버에서 새로 저장된 파일명
                 setSavefilename(result.data.savefilename);
-
-                setImgSrc(
-                    `http://3.35.4.91/images/${result.data.savefilename}`
-                );
             })
             .catch((err) => {
                 console.error(err);
