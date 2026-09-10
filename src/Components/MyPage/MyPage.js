@@ -91,7 +91,7 @@ function MyPage() {
 
                 if (member.savefilename) {
                     setImgSrc(
-                        `http://3.35.4.91/images/${member.savefilename}`
+                        `http://54.180.155.24/images/${member.savefilename}`
                     );
                 } else {
                     setImgSrc('');
@@ -211,7 +211,7 @@ function MyPage() {
                 setSavefilename(result.data.savefilename);
 
                 setImgSrc(
-                    `http://3.35.4.91/images/${result.data.savefilename}`
+                    `http://54.180.155.24/images/${result.data.savefilename}`
                 );
 
             })
