@@ -190,46 +190,6 @@ function MyPage() {
             });
     }
 
-    @PostMapping("/fileupload")
-public HashMap<String, Object> fileupload(@RequestParam("image") MultipartFile file) {
-
-    HashMap<String, Object> map = new HashMap<String, Object>();
-
-    String path = sc.getRealPath("/images");
-
-    // images 폴더가 없으면 생성
-    File imageDir = new File(path);
-    if (!imageDir.exists()) {
-        imageDir.mkdirs();
-    }
-
-    Calendar today = Calendar.getInstance();
-    long dt = today.getTimeInMillis();
-
-    String filename = file.getOriginalFilename();
-    String f1 = filename.substring(0, filename.lastIndexOf("."));
-    String f2 = filename.substring(filename.lastIndexOf("."));
-
-    String savefilename = f1 + dt + f2;
-
-    String uploadPath = path + "/" + savefilename;
-
-    try {
-
-        file.transferTo(new File(uploadPath));
-
-        map.put("savefilename", savefilename);
-
-    } catch (IllegalStateException | IOException e) {
-
-        e.printStackTrace();
-
-    }
-
-    return map;
-}
-
-
     function onSubmit() {
 
         if (!nickname.trim()) {
