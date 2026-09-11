@@ -10,6 +10,7 @@ function ItemShop() {
     useEffect(() => {
         axios.get('/api/item/list')
             .then(result => {
+                console.log('아이템 목록:', result.data.items);
                 setItems(result.data.items || []);
             })
             .catch(error => {
