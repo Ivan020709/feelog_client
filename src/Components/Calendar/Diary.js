@@ -913,10 +913,7 @@ function EmotionCalendar({
 
                             maxLength={255}
 
-                            readOnly={
-                                hasSavedDiary &&
-                                !isEditing
-                            }
+                            readOnly
 
                         />
 
