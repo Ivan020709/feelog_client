@@ -368,7 +368,7 @@ function MemberLogin() {
                         className="btn-join"
                         onClick={() =>
                             window.location.href =
-                            'http://54.180.155.24:8070/member/kakaostart'
+                            '/api/member/kakaostart'
                         }
                     >
                         KAKAO
